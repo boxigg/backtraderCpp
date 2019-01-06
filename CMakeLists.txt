@@ -96,6 +96,7 @@ ELSEIF (UNIX)
 	
 		target_link_libraries(${PROJECT_NAME}
 			pthread
+			boost_thread
 			boost_system
 			liblog4cplus.so
 			thostmduserapi.so
