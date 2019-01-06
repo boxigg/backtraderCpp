@@ -1,0 +1,1 @@
+rebuild win64 libcurl.lib. use the new lib under folder: curl/curl/builds/libcurl-vc-x64-release-dll-ssl-dll-zlib-dll-ssh2-dll-sspi/ , learned from https://blog.csdn.net/lengyuezuixue/article/details/81914746
