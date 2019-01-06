@@ -44,3 +44,8 @@
 #include <unordered_map>
 #include <thread>
 #include <vector>
+
+//Error	C2589	'(': illegal token on right side of '::' Disruptor disruptorcpp\disruptor\util.h 52 :  std::numeric_limits< std::int64_t >::max()
+//fix build error of  by https://blog.csdn.net/u012750702/article/details/51530845
+#undef min;
+#undef max;
