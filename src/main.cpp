@@ -16,13 +16,14 @@
 #include "Disruptor/IWorkHandler.h"
 #include "Disruptor/Disruptor.h"
 #include "Disruptor/ThreadPerTaskScheduler.h"
+#include "Disruptor/SpinWaitWaitStrategy.h"
 #include <iostream>
 #include <string>
 #include <cstdint>
 #include <memory>
 #include <cstdlib>
 #include <time.h>
-
+#include <chrono>
 
 void testCpr()
 {
@@ -239,10 +240,14 @@ public:
     // 重写事件处理回调函数
     void onEvent(testEvent& event) override
     {
-        std::cout << " _actuallyProcessed:" << _actuallyProcessed << "event id:" << event.id << " event.str:" << event.str <<  std::endl;
+        //std::cout << " _actuallyProcessed:" << _actuallyProcessed;
         _actuallyProcessed++;
     }
 
+    void print()
+    {
+        std::cout << "_actuallyProcessed:" << _actuallyProcessed << std::endl;
+    }
 private:
     int32_t _actuallyProcessed{ 0 };
 };
@@ -257,8 +262,12 @@ public:
         // 创建调度器
         m_ptrTaskScheduler = std::make_shared<Disruptor::ThreadPerTaskScheduler>();
         // 创建Disruptor
-        m_ptrDisruptor = std::make_shared< Disruptor::disruptor<testEvent>>([]() { return testEvent(); }
-        , m_ringBufferSize, m_ptrTaskScheduler);
+        m_ptrDisruptor = std::make_shared< Disruptor::disruptor<testEvent>>([]() { return testEvent(); } ,
+            m_ringBufferSize,
+            m_ptrTaskScheduler,
+            Disruptor::ProducerType::Single,
+            std::make_shared<Disruptor::SpinWaitWaitStrategy>()
+            );
         // 创建事件处理器
         for (size_t i = 0; i < m_workerCount; i++)
         {
@@ -305,26 +314,41 @@ private:
 
 void testDisruptor()
 {
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    //std::this_thread::sleep_for(std::chrono::seconds(2));
     Producer producer(1024, 1);
     producer.start();
-
-    for (size_t i = 0; i < 2000; i++)
+    testEvent e;
+    
+    int64_t average = 0;
+    for (int loop = 0; loop < 100; loop++)
     {
-        testEvent e;
-        e.id = i;
-        e.str = std::to_string(i);
-        producer.push(e);
+        int64_t start_nano = std::chrono::duration_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()
+            ).count();
+        for (size_t i = 0; i < 2000000; i++)
+        {
+            e.id = i;
+
+            producer.push(e);
+        }
+        int64_t end_nano = std::chrono::duration_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()
+            ).count();
+
+        average += (end_nano - start_nano);
     }
-    std::this_thread::sleep_for(std::chrono::seconds(10));
+    std::cout << "use time:" << std::to_string(average / 100) << std::endl;
+
+
+    //std::this_thread::sleep_for(std::chrono::seconds(10));
 }
 
 
 int main(int argc, char* argv[]) {
-    testTalib();
-    testCpr();
-    testJson();
-    testDisruptor();
+    //testTalib();
+    //testCpr();
+    //testJson();
+    testDisruptor();//warm up
 
     system("pause");
     return 0;
