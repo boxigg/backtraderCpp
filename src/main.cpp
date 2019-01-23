@@ -161,7 +161,7 @@ void testTalib()
     // init ta-lib context
     TA_RetCode retcode;
     retcode = TA_Initialize();
-    assert(retcode == TA_SUCCESS);
+    //assert(retcode == TA_SUCCESS);
 
     // comput moving average price
     TA_Real    close_price_array[400] = { 0 };
@@ -225,11 +225,118 @@ void testTalib()
     assert(retcode == TA_SUCCESS);
 }
 
+typedef char char_19[19];
+typedef char char_21[21];
+typedef char char_64[64];
+typedef char char_7[7];
+typedef char char_9[9];
+typedef char char_30[30];
+typedef char char_31[31];
+typedef char char_16[16];
+typedef char char_13[13];
+typedef char char_2[2];
+typedef char char_11[11];
+
+struct LFMarketDataField
+{
+    char_13  	TradingDay;            //交易日
+    char_31  	InstrumentID;          //合约代码
+    char_9   	ExchangeID;            //交易所代码
+    char_64  	ExchangeInstID;        //合约在交易所的代码
+    double   	LastPrice;             //最新价
+    double   	PreSettlementPrice;    //上次结算价
+    double   	PreClosePrice;         //昨收盘
+    double   	PreOpenInterest;       //昨持仓量
+    double   	OpenPrice;             //今开盘
+    double   	HighestPrice;          //最高价
+    double   	LowestPrice;           //最低价
+    int      	Volume;                //数量
+    double   	Turnover;              //成交金额
+    double   	OpenInterest;          //持仓量
+    double   	ClosePrice;            //今收盘
+    double   	SettlementPrice;       //本次结算价
+    double   	UpperLimitPrice;       //涨停板价
+    double   	LowerLimitPrice;       //跌停板价
+    double   	PreDelta;              //昨虚实度
+    double   	CurrDelta;             //今虚实度
+    char_13  	UpdateTime;            //最后修改时间
+    int      	UpdateMillisec;        //最后修改毫秒
+    double   	BidPrice1;             //申买价一
+    int      	BidVolume1;            //申买量一
+    double   	AskPrice1;             //申卖价一
+    int      	AskVolume1;            //申卖量一
+    double   	BidPrice2;             //申买价二
+    int      	BidVolume2;            //申买量二
+    double   	AskPrice2;             //申卖价二
+    int      	AskVolume2;            //申卖量二
+    double   	BidPrice3;             //申买价三
+    int      	BidVolume3;            //申买量三
+    double   	AskPrice3;             //申卖价三
+    int      	AskVolume3;            //申卖量三
+    double   	BidPrice4;             //申买价四
+    int      	BidVolume4;            //申买量四
+    double   	AskPrice4;             //申卖价四
+    int      	AskVolume4;            //申卖量四
+    double   	BidPrice5;             //申买价五
+    int      	BidVolume5;            //申买量五
+    double   	AskPrice5;             //申卖价五
+    int      	AskVolume5;            //申卖量五
+};
+
+
+inline struct LFMarketDataField parseFrom(const struct LFMarketDataField& ori)
+{
+    struct LFMarketDataField res = {};
+    memcpy(res.TradingDay, ori.TradingDay, 9);
+    memcpy(res.InstrumentID, ori.InstrumentID, 31);
+    memcpy(res.ExchangeID, ori.ExchangeID, 9);
+    memcpy(res.ExchangeInstID, ori.ExchangeInstID, 64);
+    res.LastPrice = ori.LastPrice;
+    res.PreSettlementPrice = ori.PreSettlementPrice;
+    res.PreClosePrice = ori.PreClosePrice;
+    res.PreOpenInterest = ori.PreOpenInterest;
+    res.OpenPrice = ori.OpenPrice;
+    res.HighestPrice = ori.HighestPrice;
+    res.LowestPrice = ori.LowestPrice;
+    res.Volume = ori.Volume;
+    res.Turnover = ori.Turnover;
+    res.OpenInterest = ori.OpenInterest;
+    res.ClosePrice = ori.ClosePrice;
+    res.SettlementPrice = ori.SettlementPrice;
+    res.UpperLimitPrice = ori.UpperLimitPrice;
+    res.LowerLimitPrice = ori.LowerLimitPrice;
+    res.PreDelta = ori.PreDelta;
+    res.CurrDelta = ori.CurrDelta;
+    memcpy(res.UpdateTime, ori.UpdateTime, 9);
+    res.UpdateMillisec = ori.UpdateMillisec;
+    res.BidPrice1 = ori.BidPrice1;
+    res.BidVolume1 = ori.BidVolume1;
+    res.AskPrice1 = ori.AskPrice1;
+    res.AskVolume1 = ori.AskVolume1;
+    res.BidPrice2 = ori.BidPrice2;
+    res.BidVolume2 = ori.BidVolume2;
+    res.AskPrice2 = ori.AskPrice2;
+    res.AskVolume2 = ori.AskVolume2;
+    res.BidPrice3 = ori.BidPrice3;
+    res.BidVolume3 = ori.BidVolume3;
+    res.AskPrice3 = ori.AskPrice3;
+    res.AskVolume3 = ori.AskVolume3;
+    res.BidPrice4 = ori.BidPrice4;
+    res.BidVolume4 = ori.BidVolume4;
+    res.AskPrice4 = ori.AskPrice4;
+    res.AskVolume4 = ori.AskVolume4;
+    res.BidPrice5 = ori.BidPrice5;
+    res.BidVolume5 = ori.BidVolume5;
+    res.AskPrice5 = ori.AskPrice5;
+    res.AskVolume5 = ori.AskVolume5;
+    return res;
+}
+
 // 定义事件体
 struct testEvent
 {
     int64_t id{ 0 };
-    std::string str;
+    LFMarketDataField md{0};
 };
 
 // 继承事件处理器接口
@@ -312,13 +419,66 @@ private:
     std::int32_t m_schedulerCount{ 1 };
 };
 
+
 void testDisruptor()
 {
     //std::this_thread::sleep_for(std::chrono::seconds(2));
     Producer producer(1024, 1);
     producer.start();
     testEvent e;
+
+
+    LFMarketDataField ori;
+
+    memcpy(ori.TradingDay, "2019-01-23", 9);
+    memcpy(ori.InstrumentID, "rb1905", 31);
+    memcpy(ori.ExchangeID, "SHFE", 9);
+    memcpy(ori.ExchangeInstID, "rb1905", 64);
+    ori.LastPrice = 3567;
+    ori.PreSettlementPrice = 3400;
+    ori.PreClosePrice = 3456;
+    ori.PreOpenInterest = 1234;
+    ori.OpenPrice = 3567;
+    ori.HighestPrice = 1234;
+    ori.LowestPrice = 1234;
+    ori.Volume = 1234;
+    ori.Turnover = 12345;
+    ori.OpenInterest = 123456;
+    ori.ClosePrice = 3434;
+    ori.SettlementPrice = 123;
+    ori.UpperLimitPrice = 5555;
+    ori.LowerLimitPrice = 3333;
+    ori.PreDelta = 12;
+    ori.CurrDelta = 12;
+    memcpy(ori.UpdateTime, "18:18:18", 9);
+    ori.UpdateMillisec = 500;
+    ori.BidPrice1 = 3456;
+    ori.BidVolume1 = 3456;
+    ori.AskPrice1 = 3456;
+    ori.AskVolume1 = 3456;
+    ori.BidPrice2 = 1;
+    ori.BidVolume2 = 2;
+    ori.AskPrice2 = 3;
+    ori.AskVolume2 = 4;
+    ori.BidPrice3 = 5;
+    ori.BidVolume3 = 6;
+    ori.AskPrice3 = 7;
+    ori.AskVolume3 = 8;
+    ori.BidPrice4 = 9;
+    ori.BidVolume4 = 10;
+    ori.AskPrice4 = 11;
+    ori.AskVolume4 = 12;
+    ori.BidPrice5 = 13;
+    ori.BidVolume5 = 14;
+    ori.AskPrice5 = 15;
+    ori.AskVolume5 = 16;
     
+    for (size_t i = 0; i < 2000000; i++)
+    {
+        e.id = i;
+        producer.push(e);
+    }
+
     int64_t average = 0;
     for (int loop = 0; loop < 100; loop++)
     {
@@ -328,7 +488,48 @@ void testDisruptor()
         for (size_t i = 0; i < 2000000; i++)
         {
             e.id = i;
-
+            memcpy(e.md.TradingDay, ori.TradingDay, 9);
+            memcpy(e.md.InstrumentID, ori.InstrumentID, 31);
+            memcpy(e.md.ExchangeID, ori.ExchangeID, 9);
+            memcpy(e.md.ExchangeInstID, ori.ExchangeInstID, 64);
+            e.md.LastPrice = ori.LastPrice;
+            e.md.PreSettlementPrice = ori.PreSettlementPrice;
+            e.md.PreClosePrice = ori.PreClosePrice;
+            e.md.PreOpenInterest = ori.PreOpenInterest;
+            e.md.OpenPrice = ori.OpenPrice;
+            e.md.HighestPrice = ori.HighestPrice;
+            e.md.LowestPrice = ori.LowestPrice;
+            e.md.Volume = ori.Volume;
+            e.md.Turnover = ori.Turnover;
+            e.md.OpenInterest = ori.OpenInterest;
+            e.md.ClosePrice = ori.ClosePrice;
+            e.md.SettlementPrice = ori.SettlementPrice;
+            e.md.UpperLimitPrice = ori.UpperLimitPrice;
+            e.md.LowerLimitPrice = ori.LowerLimitPrice;
+            e.md.PreDelta = ori.PreDelta;
+            e.md.CurrDelta = ori.CurrDelta;
+            memcpy(e.md.UpdateTime, ori.UpdateTime, 9);
+            e.md.UpdateMillisec = ori.UpdateMillisec;
+            e.md.BidPrice1 = ori.BidPrice1;
+            e.md.BidVolume1 = ori.BidVolume1;
+            e.md.AskPrice1 = ori.AskPrice1;
+            e.md.AskVolume1 = ori.AskVolume1;
+            e.md.BidPrice2 = ori.BidPrice2;
+            e.md.BidVolume2 = ori.BidVolume2;
+            e.md.AskPrice2 = ori.AskPrice2;
+            e.md.AskVolume2 = ori.AskVolume2;
+            e.md.BidPrice3 = ori.BidPrice3;
+            e.md.BidVolume3 = ori.BidVolume3;
+            e.md.AskPrice3 = ori.AskPrice3;
+            e.md.AskVolume3 = ori.AskVolume3;
+            e.md.BidPrice4 = ori.BidPrice4;
+            e.md.BidVolume4 = ori.BidVolume4;
+            e.md.AskPrice4 = ori.AskPrice4;
+            e.md.AskVolume4 = ori.AskVolume4;
+            e.md.BidPrice5 = ori.BidPrice5;
+            e.md.BidVolume5 = ori.BidVolume5;
+            e.md.AskPrice5 = ori.AskPrice5;
+            e.md.AskVolume5 = ori.AskVolume5;
             producer.push(e);
         }
         int64_t end_nano = std::chrono::duration_cast<std::chrono::nanoseconds>(
