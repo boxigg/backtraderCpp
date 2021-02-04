@@ -1,0 +1,227 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libcpr.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 63,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 35,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++14 -O3 -Wall -fPIC -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/opt/kungfu/toolchain/boost-1.62.0/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/CTPForLinux64"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/TalibForLinux64/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/curl-7.63.0/linux763/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/openssl-1.1.1a/libForLinux64/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/log4cplus/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/DisruptorCpp"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/fast-cpp-csv-parser"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/cpr/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/rapidjson/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			]
+		}
+	],
+	"folder" : 
+	{
+		"name" : "thirdparty"
+	},
+	"id" : "cpr::@6890427a1f51a3e7e1df",
+	"name" : "cpr",
+	"nameOnDisk" : "libcpr.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/auth.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/cookies.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/cprtypes.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/digest.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/error.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/multipart.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/parameters.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/payload.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/proxies.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/session.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/ssl_options.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/timeout.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/cpr/cpr/util.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

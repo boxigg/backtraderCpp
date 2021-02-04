@@ -1,0 +1,291 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libDisruptor.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 66,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 35,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++14 -O3 -Wall -fPIC -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/opt/kungfu/toolchain/boost-1.62.0/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/CTPForLinux64"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/TalibForLinux64/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/curl-7.63.0/linux763/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/openssl-1.1.1a/libForLinux64/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/lib/log4cplus/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/DisruptorCpp"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/fast-cpp-csv-parser"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/cpr/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/yangyining/Documents/IE/quant/backtraderCpp/thirdparty/rapidjson/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"folder" : 
+	{
+		"name" : "thirdparty"
+	},
+	"id" : "Disruptor::@6890427a1f51a3e7e1df",
+	"name" : "Disruptor",
+	"nameOnDisk" : "libDisruptor.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/BasicExecutor.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/BlockingWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/BusySpinWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/FixedSequenceGroup.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ProcessingSequenceBarrier.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ProducerType.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/RoundRobinThreadAffinedTaskScheduler.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/Sequence.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/SequenceGroups.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/SleepingWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/SpinWait.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/SpinWaitWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ThreadHelper_Linux.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ThreadHelper_Windows.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ThreadHelper_macOS.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/ThreadPerTaskScheduler.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/TimeoutBlockingWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/TypeInfo.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/Util.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/YieldingWaitStrategy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "thirdparty/DisruptorCpp/Disruptor/stdafx.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}
